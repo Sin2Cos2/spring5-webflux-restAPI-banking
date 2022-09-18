@@ -19,9 +19,9 @@ public class CurrencyExchange {
     @Id
     private long id;
     private BigDecimal receivedAmount;
-    private CurrencyDictionary receivedCurrency;
+    private String receivedCurrency;
     private BigDecimal releasedAmount;
-    private CurrencyDictionary releasedCurrency;
+    private String releasedCurrency;
     private BigDecimal rate;
     private Staff staff;
     private CashDesk cashDesk;

@@ -3,6 +3,7 @@ package sin2cos2.currencyExchange.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import sin2cos2.currencyExchange.model.CurrencyRateDTO;
 import sin2cos2.currencyExchange.services.CurrencyRateService;
@@ -20,8 +21,8 @@ public class CurrencyRateController {
         return currencyRateService.save(currencyRateDTO);
     }
 
-    @GetMapping("/currency/{currencyId}")
-    public Mono<CurrencyRateDTO> getCurrencyRateByCurrency(@PathVariable String currencyId) {
-        return currencyRateService.getCurrencyRateByCurrency(Long.valueOf(currencyId));
+    @GetMapping("/{currencyAbbreviation}")
+    public Flux<CurrencyRateDTO> getCurrencyRateByCurrency(@PathVariable String currencyAbbreviation) {
+        return currencyRateService.getCurrencyRateByCurrency(currencyAbbreviation);
     }
 }

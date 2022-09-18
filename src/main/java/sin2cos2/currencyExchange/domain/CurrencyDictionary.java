@@ -14,7 +14,6 @@ import org.springframework.data.annotation.Id;
 public class CurrencyDictionary {
 
     @Id
-    private long id;
     private String abbreviation;
     private String currency;
 }

@@ -16,6 +16,6 @@ public class CurrencyRateDTO {
 
     private Long ratio;
     private BigDecimal rate;
-    private String currencyAbbreviation;
-    private LocalDate date;
+    private String currency;
+    private LocalDate date = LocalDate.now();
 }

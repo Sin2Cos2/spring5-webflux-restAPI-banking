@@ -22,7 +22,6 @@ public class CurrencyRate {
     private Long id;
     private Long ratio;
     private BigDecimal rate;
-    @Column("currency_id")
-    private Long currencyDictionaryId;
+    private String currency;
     private LocalDate date;
 }

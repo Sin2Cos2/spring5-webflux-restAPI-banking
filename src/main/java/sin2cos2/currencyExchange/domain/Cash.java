@@ -17,7 +17,7 @@ public class Cash {
 
     @Id
     private Long id;
-    private Long currencyDictionaryId;
+    private String currency;
     private Long cashDeskId;
     private BigDecimal cash;
     private LocalDate date;
