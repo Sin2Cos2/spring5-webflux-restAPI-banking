@@ -14,6 +14,7 @@ public interface CurrencyExchangeMapper {
     @Mapping(source = "employeeName", target = "staff")
     CurrencyExchangeDTO currencyExchangeToCurrencyExchangeDTO(CurrencyExchange currencyExchange, String employeeName);
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(source = "employeeId", target = "staffId")
     CurrencyExchange currencyExchangeDtoToCurrencyExchange(CurrencyExchangeDTO currencyExchangeDTO, Long employeeId);
 }
