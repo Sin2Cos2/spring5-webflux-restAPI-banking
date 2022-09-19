@@ -1,6 +1,8 @@
 package sin2cos2.currencyExchange.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
@@ -15,6 +17,7 @@ import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
 
     private final CurrencyExchangeRepository currencyExchangeRepository;
@@ -34,6 +37,7 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
         //TODO: If staffMono is empty, result is not written in currency_exchange,
         // but cashService transaction is executed
         Mono<Staff> staffMono = staffService.findByName(currencyExchangeDTO.getStaff());
+        log.error("After staff mono");
 
         //TODO: In case of wrong cashDeskId, no changes are made in database, but HTTP status is 200
         return cashService.withdrawAndDeposit(currencyExchangeDTO)
@@ -44,16 +48,20 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
                         return Mono.error(new IllegalTransactionException
                                 ("At the moment we do not have the required amount"));
 
+                    log.error("before the saving");
+
                     // Saving the transaction in the database.
                     return staffMono.flatMap(staff -> {
-                        CurrencyExchange currencyExchange = currencyExchangeMapper
-                                .currencyExchangeDtoToCurrencyExchange(currencyExchangeDTO, staff.getId());
-                        currencyExchange.setDate(LocalDateTime.now());
+                                CurrencyExchange currencyExchange = currencyExchangeMapper
+                                        .currencyExchangeDtoToCurrencyExchange(currencyExchangeDTO, staff.getId());
+                                currencyExchange.setDate(LocalDateTime.now());
 
-                        return currencyExchangeRepository.save(currencyExchange)
-                                .map(savedCurrencyExchange -> currencyExchangeMapper
-                                        .currencyExchangeToCurrencyExchangeDTO(savedCurrencyExchange, staff.getName()));
-                    });
-                });
+                                return currencyExchangeRepository.save(currencyExchange)
+                                        .map(savedCurrencyExchange -> currencyExchangeMapper
+                                                .currencyExchangeToCurrencyExchangeDTO(savedCurrencyExchange, staff.getName()));
+                            })
+                            .switchIfEmpty(Mono.just(new CurrencyExchangeDTO()));
+                })
+                .switchIfEmpty(Mono.just(new CurrencyExchangeDTO()));
     }
 }
