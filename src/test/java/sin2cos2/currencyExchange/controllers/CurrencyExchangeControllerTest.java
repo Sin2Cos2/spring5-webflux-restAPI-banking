@@ -99,7 +99,7 @@ class CurrencyExchangeControllerTest {
         when(currencyExchangeRepository.save(any())).thenReturn(Mono.just(currencyExchange));
 
         webTestClient.post()
-                .uri("/currencyExchange")
+                .uri("/currencyExchanges")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(currencyExchangeToSave))
                 .exchange()
@@ -124,7 +124,7 @@ class CurrencyExchangeControllerTest {
         when(currencyExchangeRepository.save(any())).thenReturn(Mono.just(currencyExchange));
 
         webTestClient.post()
-                .uri("/currencyExchange")
+                .uri("/currencyExchanges")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(currencyExchangeToSave))
                 .exchange()
@@ -146,7 +146,7 @@ class CurrencyExchangeControllerTest {
         when(currencyExchangeRepository.save(any())).thenReturn(Mono.just(currencyExchange));
 
         webTestClient.post()
-                .uri("/currencyExchange")
+                .uri("/currencyExchanges")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(currencyExchangeToSave))
                 .exchange();
@@ -171,7 +171,7 @@ class CurrencyExchangeControllerTest {
         when(currencyExchangeRepository.save(any())).thenReturn(Mono.just(currencyExchange));
 
         webTestClient.post()
-                .uri("/currencyExchange")
+                .uri("/currencyExchanges")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(currencyExchangeToSave))
                 .exchange();

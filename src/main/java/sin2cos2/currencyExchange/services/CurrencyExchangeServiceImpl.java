@@ -37,7 +37,6 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
         //TODO: If staffMono is empty, result is not written in currency_exchange,
         // but cashService transaction is executed
         Mono<Staff> staffMono = staffService.findByName(currencyExchangeDTO.getStaff());
-        log.error("After staff mono");
 
         //TODO: In case of wrong cashDeskId, no changes are made in database, but HTTP status is 200
         return cashService.withdrawAndDeposit(currencyExchangeDTO)
@@ -47,8 +46,6 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
                     if (result.getId() == null)
                         return Mono.error(new IllegalTransactionException
                                 ("At the moment we do not have the required amount"));
-
-                    log.error("before the saving");
 
                     // Saving the transaction in the database.
                     return staffMono.flatMap(staff -> {

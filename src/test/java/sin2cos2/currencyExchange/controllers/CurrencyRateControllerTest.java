@@ -3,7 +3,6 @@ package sin2cos2.currencyExchange.controllers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.reactivestreams.Publisher;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -50,7 +49,7 @@ class CurrencyRateControllerTest {
         currencyRateToSave.setCurrency("BGP");
 
         webTestClient.post()
-                .uri("/currencyRate")
+                .uri("/currencyRates")
                 .body(Mono.just(currencyRateToSave), CurrencyRateDTO.class)
                 .exchange()
                 .expectStatus()
@@ -70,7 +69,7 @@ class CurrencyRateControllerTest {
                 .willReturn(Flux.just(currencyRate));
 
         webTestClient.get()
-                .uri("/currencyRate/GBP")
+                .uri("/currencyRates/GBP")
                 .exchange()
                 .expectBodyList(CurrencyRateDTO.class);
     }

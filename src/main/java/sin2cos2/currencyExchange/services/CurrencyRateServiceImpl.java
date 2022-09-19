@@ -20,6 +20,7 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
 
     @Override
     public Mono<CurrencyRateDTO> save(CurrencyRateDTO currencyRateDTO) {
+        currencyRateDTO.setDate(currencyRateDTO.getDate() == null ? LocalDate.now() : currencyRateDTO.getDate());
 
         CurrencyRate currencyRate = currencyRateMapper.currencyRateDtoToCurrencyRate(currencyRateDTO);
         return currencyRateRepository
