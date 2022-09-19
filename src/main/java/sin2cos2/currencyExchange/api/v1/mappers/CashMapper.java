@@ -1,9 +1,9 @@
-package sin2cos2.currencyExchange.mappers;
+package sin2cos2.currencyExchange.api.v1.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import sin2cos2.currencyExchange.domain.Cash;
-import sin2cos2.currencyExchange.model.CashDTO;
+import sin2cos2.currencyExchange.api.v1.model.CashDTO;
 
 @Mapper
 public interface CashMapper {

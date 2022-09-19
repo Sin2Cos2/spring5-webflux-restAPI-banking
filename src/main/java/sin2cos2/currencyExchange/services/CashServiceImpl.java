@@ -5,13 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import sin2cos2.currencyExchange.domain.Cash;
-import sin2cos2.currencyExchange.mappers.CashMapper;
-import sin2cos2.currencyExchange.model.CashDTO;
-import sin2cos2.currencyExchange.model.CurrencyExchangeDTO;
+import sin2cos2.currencyExchange.api.v1.mappers.CashMapper;
+import sin2cos2.currencyExchange.api.v1.model.CashDTO;
+import sin2cos2.currencyExchange.api.v1.model.CurrencyExchangeDTO;
 import sin2cos2.currencyExchange.repositories.CashRepository;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RequiredArgsConstructor

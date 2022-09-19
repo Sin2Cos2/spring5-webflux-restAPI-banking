@@ -2,12 +2,11 @@ package sin2cos2.currencyExchange.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
+import sin2cos2.currencyExchange.api.v1.controllers.CashController;
 import sin2cos2.currencyExchange.domain.Cash;
-import sin2cos2.currencyExchange.model.CashDTO;
 import sin2cos2.currencyExchange.repositories.CashRepository;
 import sin2cos2.currencyExchange.services.CashService;
 import sin2cos2.currencyExchange.services.CashServiceImpl;
@@ -15,7 +14,6 @@ import sin2cos2.currencyExchange.services.CashServiceImpl;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 
 class CashControllerTest {
@@ -47,7 +45,7 @@ class CashControllerTest {
                 .willReturn(Mono.just(cash));
 
         webTestClient.get()
-                .uri("/cash")
+                .uri("/api/v1/cash")
                 .exchange()
                 .expectBody(Cash.class);
     }
@@ -65,7 +63,7 @@ class CashControllerTest {
                 .willReturn(Mono.just(cash));
 
         webTestClient.get()
-                .uri("/cash")
+                .uri("/api/v1/cash")
                 .exchange()
                 .expectBody(Cash.class);
     }

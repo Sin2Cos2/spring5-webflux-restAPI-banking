@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import sin2cos2.currencyExchange.domain.CurrencyRate;
-import sin2cos2.currencyExchange.mappers.CurrencyRateMapper;
-import sin2cos2.currencyExchange.model.CurrencyRateDTO;
+import sin2cos2.currencyExchange.api.v1.mappers.CurrencyRateMapper;
+import sin2cos2.currencyExchange.api.v1.model.CurrencyRateDTO;
 import sin2cos2.currencyExchange.repositories.CurrencyRateRepository;
 
 import java.time.LocalDate;

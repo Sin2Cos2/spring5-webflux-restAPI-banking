@@ -1,4 +1,4 @@
-package sin2cos2.currencyExchange.model;
+package sin2cos2.currencyExchange.api.v1.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

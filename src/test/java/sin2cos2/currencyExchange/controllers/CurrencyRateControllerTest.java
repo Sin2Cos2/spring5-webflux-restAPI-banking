@@ -6,8 +6,9 @@ import org.mockito.Mockito;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import sin2cos2.currencyExchange.api.v1.controllers.CurrencyRateController;
 import sin2cos2.currencyExchange.domain.CurrencyRate;
-import sin2cos2.currencyExchange.model.CurrencyRateDTO;
+import sin2cos2.currencyExchange.api.v1.model.CurrencyRateDTO;
 import sin2cos2.currencyExchange.repositories.CurrencyRateRepository;
 import sin2cos2.currencyExchange.services.CurrencyRateService;
 import sin2cos2.currencyExchange.services.CurrencyRateServiceImpl;
@@ -49,7 +50,7 @@ class CurrencyRateControllerTest {
         currencyRateToSave.setCurrency("BGP");
 
         webTestClient.post()
-                .uri("/currencyRates")
+                .uri("/api/v1/currencyRates")
                 .body(Mono.just(currencyRateToSave), CurrencyRateDTO.class)
                 .exchange()
                 .expectStatus()
@@ -69,7 +70,7 @@ class CurrencyRateControllerTest {
                 .willReturn(Flux.just(currencyRate));
 
         webTestClient.get()
-                .uri("/currencyRates/GBP")
+                .uri("/api/v1/currencyRates/GBP")
                 .exchange()
                 .expectBodyList(CurrencyRateDTO.class);
     }

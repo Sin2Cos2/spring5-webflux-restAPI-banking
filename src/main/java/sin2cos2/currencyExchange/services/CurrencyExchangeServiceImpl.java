@@ -2,15 +2,14 @@ package sin2cos2.currencyExchange.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 import sin2cos2.currencyExchange.domain.CurrencyExchange;
 import sin2cos2.currencyExchange.domain.Staff;
 import sin2cos2.currencyExchange.exceptions.IllegalTransactionException;
-import sin2cos2.currencyExchange.mappers.CurrencyExchangeMapper;
-import sin2cos2.currencyExchange.model.CurrencyExchangeDTO;
+import sin2cos2.currencyExchange.api.v1.mappers.CurrencyExchangeMapper;
+import sin2cos2.currencyExchange.api.v1.model.CurrencyExchangeDTO;
 import sin2cos2.currencyExchange.repositories.CurrencyExchangeRepository;
 
 import java.time.LocalDateTime;

@@ -7,10 +7,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 import reactor.core.publisher.Mono;
+import sin2cos2.currencyExchange.api.v1.controllers.CurrencyExchangeController;
 import sin2cos2.currencyExchange.domain.Cash;
 import sin2cos2.currencyExchange.domain.CurrencyExchange;
 import sin2cos2.currencyExchange.domain.Staff;
-import sin2cos2.currencyExchange.model.CurrencyExchangeDTO;
+import sin2cos2.currencyExchange.api.v1.model.CurrencyExchangeDTO;
 import sin2cos2.currencyExchange.repositories.CashRepository;
 import sin2cos2.currencyExchange.repositories.CurrencyExchangeRepository;
 import sin2cos2.currencyExchange.repositories.StaffRepository;
@@ -99,7 +100,7 @@ class CurrencyExchangeControllerTest {
         when(currencyExchangeRepository.save(any())).thenReturn(Mono.just(currencyExchange));
 
         webTestClient.post()
-                .uri("/currencyExchanges")
+                .uri("/api/v1/currencyExchanges")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(currencyExchangeToSave))
                 .exchange()
@@ -124,7 +125,7 @@ class CurrencyExchangeControllerTest {
         when(currencyExchangeRepository.save(any())).thenReturn(Mono.just(currencyExchange));
 
         webTestClient.post()
-                .uri("/currencyExchanges")
+                .uri("/api/v1/currencyExchanges")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(currencyExchangeToSave))
                 .exchange()
@@ -146,7 +147,7 @@ class CurrencyExchangeControllerTest {
         when(currencyExchangeRepository.save(any())).thenReturn(Mono.just(currencyExchange));
 
         webTestClient.post()
-                .uri("/currencyExchanges")
+                .uri("/api/v1/currencyExchanges")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(currencyExchangeToSave))
                 .exchange();
@@ -171,7 +172,7 @@ class CurrencyExchangeControllerTest {
         when(currencyExchangeRepository.save(any())).thenReturn(Mono.just(currencyExchange));
 
         webTestClient.post()
-                .uri("/currencyExchanges")
+                .uri("/api/v1/currencyExchanges")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(currencyExchangeToSave))
                 .exchange();

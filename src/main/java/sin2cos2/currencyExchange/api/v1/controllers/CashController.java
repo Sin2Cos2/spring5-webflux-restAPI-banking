@@ -1,17 +1,15 @@
-package sin2cos2.currencyExchange.controllers;
+package sin2cos2.currencyExchange.api.v1.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
-import sin2cos2.currencyExchange.model.CashDTO;
+import sin2cos2.currencyExchange.api.v1.model.CashDTO;
 import sin2cos2.currencyExchange.services.CashService;
-
-import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/cash")
+@RequestMapping("/api/v1/cash")
 public class CashController {
 
     private final CashService cashService;
