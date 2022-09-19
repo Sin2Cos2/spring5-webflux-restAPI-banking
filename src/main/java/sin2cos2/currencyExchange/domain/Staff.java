@@ -11,6 +11,6 @@ import org.springframework.data.annotation.Id;
 public class Staff {
 
     @Id
-    private long id;
+    private Long id;
     private String name;
 }

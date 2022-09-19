@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class CurrencyExchange {
 
     @Id
-    private long id;
+    private Long id;
     private BigDecimal receivedAmount;
     private String receivedCurrency;
     private BigDecimal releasedAmount;

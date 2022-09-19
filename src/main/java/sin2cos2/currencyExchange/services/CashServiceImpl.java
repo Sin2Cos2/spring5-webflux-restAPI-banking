@@ -63,6 +63,8 @@ public class CashServiceImpl implements CashService {
     public Mono<CashDTO> updateCash(CashDTO cashDTO) {
         Cash cash = cashMapper.cashDtoToCash(cashDTO);
 
+        // If the cash desk doesn't have the currency, the `findByCashDeskIdAndCurrency` method returns an empty `Mono`.
+        // The `switchIfEmpty` method replaces the empty `Mono` with a `Mono` that contains a new `Cash` object.
         return cashRepository
                 .findByCashDeskIdAndCurrency(cash.getCashDeskId(), cash.getCurrency())
                 .switchIfEmpty(Mono.just(new Cash()))

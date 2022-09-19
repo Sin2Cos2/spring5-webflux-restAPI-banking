@@ -13,5 +13,5 @@ import org.springframework.data.annotation.Id;
 public class CashDesk {
 
     @Id
-    private long id;
+    private Long id;
 }
