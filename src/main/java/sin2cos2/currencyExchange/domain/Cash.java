@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -20,5 +20,5 @@ public class Cash {
     private String currency;
     private Long cashDeskId;
     private BigDecimal cash;
-    private LocalDate date;
+    private LocalDateTime date;
 }

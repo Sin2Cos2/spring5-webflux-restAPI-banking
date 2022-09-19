@@ -1,28 +1,25 @@
-package sin2cos2.currencyExchange.domain;
+package sin2cos2.currencyExchange.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurrencyExchange {
+public class CurrencyExchangeDTO {
 
-    @Id
-    private long id;
     private BigDecimal receivedAmount;
     private String receivedCurrency;
     private BigDecimal releasedAmount;
     private String releasedCurrency;
     private BigDecimal rate;
-    private Long staffId;
+    private String staff;
     private Long cashDeskId;
     private LocalDateTime date;
 }
